@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+
+    <Authors>Rob Vining</Authors>
+
+    <Company>Red Tarn Technology Ltd</Company>
+
+    <Description>Core framework to enable quick startup of Selenium and Specflow projects. Contains the boilerplate code to set up dependency injection and initiate the IWebDriver as well as providing base classes for steps and UI components with helper methods to wrap UI integration.</Description>
+
+    <Product>Redtarn Selenium Core</Product>
+
+    <PackageProjectUrl>https://github.com/shandybob76/redtarn-selenium-core</PackageProjectUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <CodeAnalysisRuleSet>Redtarn.Selenium.Core.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <CodeAnalysisRuleSet>Redtarn.Selenium.Core.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.2.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="Selenium.Firefox.WebDriver" Version="0.24.0" />
+    <PackageReference Include="Selenium.Support" Version="3.14.0" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="74.0.3729.6" />
+    <PackageReference Include="Selenium.WebDriver.IEDriver" Version="3.141.59" />
+    <PackageReference Include="Selenium.WebDriver.MicrosoftDriver" Version="17.17134.0" />
+    <PackageReference Include="SpecFlow.MsTest" Version="3.0.213" />
+    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.0.213" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>
