@@ -1,4 +1,4 @@
-﻿// <copyright file="BaseUiItem.cs" company="Red Tarn Technology Ltd">
+﻿// <copyright file="BaseUIItem.cs" company="Red Tarn Technology Ltd">
 // Copyright (c) Red Tarn Technology Ltd. All rights reserved.
 // </copyright>
 
@@ -13,7 +13,7 @@ namespace RedTarn.Selenium.Core
     /// Base UI Item - abstract class to supply helper methods for surfacing
     /// UI elements.
     /// </summary>
-    public abstract class BaseUiItem
+    public abstract class BaseUIItem
     {
         /// <summary>
         /// The container selector.
@@ -21,11 +21,11 @@ namespace RedTarn.Selenium.Core
         private readonly By containerSelector;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BaseUiItem"/> class.
+        /// Initializes a new instance of the <see cref="BaseUIItem"/> class.
         /// </summary>
         /// <param name="context">The test context.</param>
         /// <param name="containerSelector">The container selector.</param>
-        protected BaseUiItem(IContext context, By containerSelector)
+        protected BaseUIItem(IContext context, By containerSelector)
         {
             this.Context = context;
             this.containerSelector = containerSelector;

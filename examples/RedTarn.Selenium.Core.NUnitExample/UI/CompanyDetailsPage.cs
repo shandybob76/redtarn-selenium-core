@@ -1,10 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using RedTarn.Selenium.Core.Bootstrap.Contexts.Interfaces;
 
-namespace RedTarn.Selenium.Core.MSTestExample.UI
+namespace RedTarn.Selenium.Core.NUnitExample.UI
 {
-    public class CompanyDetailsPage : BaseUiItem
+    public class CompanyDetailsPage : BaseUIItem
     {
         public CompanyDetailsPage(IContext context) : base(context, By.Id("page-container"))
         {
