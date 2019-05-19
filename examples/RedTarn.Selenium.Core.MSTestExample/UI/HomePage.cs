@@ -7,13 +7,13 @@ using TechTalk.SpecFlow;
 namespace RedTarn.Selenium.Core.MSTestExample.UI
 {
     [Binding]
-    public class HomePage : BaseUiItem
+    public class HomePage : BaseUIItem
     {
         public HomePage(IContext context) : base(context, By.Id("page-container"))
         {
         }
 
-        public Input SearchInput => GetElementById<Input>("site-search-text");
+        public TextInput SearchInput => GetElementById<TextInput>("site-search-text");
 
         public Button SearchButton => GetElementById<Button>("search-submit");
     }

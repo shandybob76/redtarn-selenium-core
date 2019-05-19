@@ -1,9 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 using RedTarn.Selenium.Core.Bootstrap.Contexts.Interfaces;
-using RedTarn.Selenium.Core.MSTestExample.UI;
+using RedTarn.Selenium.Core.NUnitExample.UI;
 using TechTalk.SpecFlow;
 
-namespace RedTarn.Selenium.Core.MSTestExample.UISteps
+namespace RedTarn.Selenium.Core.NUnitExample.UISteps
 {
     [Binding]
     public class CompanyDetailsPageSteps : BaseSteps

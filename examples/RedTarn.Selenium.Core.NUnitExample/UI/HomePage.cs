@@ -1,19 +1,18 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using RedTarn.Selenium.Core.Bootstrap.Contexts.Interfaces;
 using RedTarn.Selenium.Core.Bootstrap.UIElements;
 using TechTalk.SpecFlow;
 
-namespace RedTarn.Selenium.Core.MSTestExample.UI
+namespace RedTarn.Selenium.Core.NUnitExample.UI
 {
     [Binding]
-    public class HomePage : BaseUiItem
+    public class HomePage : BaseUIItem
     {
         public HomePage(IContext context) : base(context, By.Id("page-container"))
         {
         }
 
-        public Input SearchInput => GetElementById<Input>("site-search-text");
+        public TextInput SearchInput => GetElementById<TextInput>("site-search-text");
 
         public Button SearchButton => GetElementById<Button>("search-submit");
     }
