@@ -1,4 +1,4 @@
-﻿// <copyright file="IUIContext.cs" company="Red Tarn Technology Ltd">
+﻿// <copyright file="IUserInterfaceContext.cs" company="Red Tarn Technology Ltd">
 // Copyright (c) Red Tarn Technology Ltd. All rights reserved.
 // </copyright>
 
@@ -13,7 +13,7 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts.Interfaces
     /// <summary>
     /// Interface to define the methods on the UI context.
     /// </summary>
-    public interface IUIContext : IDisposable
+    public interface IUserInterfaceContext : IDisposable
     {
         /// <summary>
         /// Go to a specified relative url.

@@ -38,7 +38,7 @@ namespace RedTarn.Selenium.Core.Steps
         {
             if (_scenarioContext.TestError != null)
             {
-                Context.UI.TakeScreenshot(_scenarioContext);
+                Context.UserInterface.TakeScreenshot(_scenarioContext);
             }
         }
     }

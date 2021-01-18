@@ -1,4 +1,4 @@
-﻿// <copyright file="UIContext.cs" company="Red Tarn Technology Ltd">
+﻿// <copyright file="UserInterfaceContext.cs" company="Red Tarn Technology Ltd">
 // Copyright (c) Red Tarn Technology Ltd. All rights reserved.
 // </copyright>
 
@@ -19,12 +19,12 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
     /// <summary>
     /// UI context class.
     /// </summary>
-    public class UIContext : IUIContext
+    public class UserInterfaceContext : IUserInterfaceContext
     {
         /// <summary>
         /// The base URL for the site being tested.
         /// </summary>
-        private readonly string baseUrl;
+        private readonly string _baseUrl;
 
         /// <summary>
         /// The test configuration.
@@ -34,40 +34,40 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         /// <summary>
         /// The default wait for interacting with elements in the site.
         /// </summary>
-        private IWait<IWebDriver> defaultWait;
+        private IWait<IWebDriver> _defaultWait;
 
         /// <summary>
         /// The web driver.
         /// </summary>
-        private IWebDriver webDriver;
+        private IWebDriver _webDriver;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UIContext"/> class.
+        /// Initializes a new instance of the <see cref="UserInterfaceContext"/> class.
         /// </summary>
         /// <param name="webDriverInitialiser">The web driver initialiser.</param>
         /// <param name="testConfiguration">The test configuration.</param>
-        public UIContext(IWebDriverInitialiser webDriverInitialiser, ITestConfiguration testConfiguration)
+        public UserInterfaceContext(IWebDriverInitialiser webDriverInitialiser, ITestConfiguration testConfiguration)
         {
-            webDriver = webDriverInitialiser.Initialise(testConfiguration.DeviceType);
+            _webDriver = webDriverInitialiser.Initialise(testConfiguration.DeviceType);
 
-            defaultWait = new WebDriverWait(webDriver, TimeSpan.FromMilliseconds(testConfiguration.UiTimeout))
+            _defaultWait = new WebDriverWait(_webDriver, TimeSpan.FromMilliseconds(testConfiguration.UiTimeout))
             {
                 PollingInterval = TimeSpan.FromMilliseconds(testConfiguration.UiPollingInterval)
             };
 
-            baseUrl = testConfiguration.BaseUrl;
+            _baseUrl = testConfiguration.BaseUrl;
             _testConfiguration = testConfiguration;
 
-            if (!baseUrl.EndsWith("/"))
+            if (!_baseUrl.EndsWith("/"))
             {
-                baseUrl += "/";
+                _baseUrl += "/";
             }
         }
 
         /// <summary>
-        /// Finalizes an instance of the <see cref="UIContext"/> class.
+        /// Finalizes an instance of the <see cref="UserInterfaceContext"/> class.
         /// </summary>
-        ~UIContext()
+        ~UserInterfaceContext()
         {
             // Finalizer calls Dispose(false)
             Dispose(false);
@@ -84,7 +84,7 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
                 url = url[1..];
             }
 
-            webDriver.Navigate().GoToUrl(baseUrl + url);
+            _webDriver.Navigate().GoToUrl(_baseUrl + url);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         {
             try
             {
-                return defaultWait.Until(d => d.FindElement(by));
+                return _defaultWait.Until(d => d.FindElement(by));
             }
             catch (Exception)
             {
@@ -117,8 +117,8 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
             try
             {
                 var element = container != null
-                    ? defaultWait.Until(d => container.FindElement(by))
-                    : defaultWait.Until(d => d.FindElement(by));
+                    ? _defaultWait.Until(d => container.FindElement(by))
+                    : _defaultWait.Until(d => d.FindElement(by));
 
                 return Element<T>(element);
             }
@@ -141,8 +141,8 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
             try
             {
                 var elements = container != null
-                    ? defaultWait.Until(d => container.FindElements(by))
-                    : defaultWait.Until(d => d.FindElements(by));
+                    ? _defaultWait.Until(d => container.FindElements(by))
+                    : _defaultWait.Until(d => d.FindElements(by));
 
                 return Elements<T>(elements);
             }
@@ -160,7 +160,7 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         /// <returns>True if the element does not exist.</returns>
         public bool NotExists(By by, IWebElement container)
         {
-            return defaultWait.Until(driver =>
+            return _defaultWait.Until(driver =>
             {
                 try
                 {
@@ -191,7 +191,7 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         {
             try
             {
-                return defaultWait.Until(d => webDriver.Url.Replace(baseUrl, string.Empty).Split('?')[0] == url);
+                return _defaultWait.Until(d => _webDriver.Url.Replace(_baseUrl, string.Empty).Split('?')[0] == url);
             }
             catch (Exception)
             {
@@ -204,7 +204,7 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         /// </summary>
         public void Refresh()
         {
-            webDriver.Navigate().Refresh();
+            _webDriver.Navigate().Refresh();
         }
 
         /// <summary>
@@ -212,7 +212,7 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         /// </summary>
         public void Back()
         {
-            webDriver.Navigate().Back();
+            _webDriver.Navigate().Back();
         }
 
         /// <summary>
@@ -220,7 +220,7 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         /// </summary>
         public void Forward()
         {
-            webDriver.Navigate().Forward();
+            _webDriver.Navigate().Forward();
         }
 
         /// <summary>
@@ -234,7 +234,7 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
                 return;
             }
 
-            var bytes = ((ITakesScreenshot)webDriver).GetScreenshot().AsByteArray;
+            var bytes = ((ITakesScreenshot)_webDriver).GetScreenshot().AsByteArray;
 
             var path = $"{_testConfiguration.ScreenshotFolder}\\{_testConfiguration.DeviceType}\\{_testConfiguration.BrowserType}\\{scenarioContext.ScenarioInfo.Title}\\";
             if (!Directory.Exists(path))
@@ -264,17 +264,17 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         /// <param name="disposing">Whether currently disposing.</param>
         protected virtual void Dispose(bool disposing)
         {
-            if (webDriver == null)
+            if (_webDriver == null)
             {
                 return;
             }
 
             if (disposing)
             {
-                webDriver.Quit();
-                webDriver.Dispose();
-                webDriver = null;
-                defaultWait = null;
+                _webDriver.Quit();
+                _webDriver.Dispose();
+                _webDriver = null;
+                _defaultWait = null;
             }
         }
 
@@ -287,7 +287,7 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         private T Element<T>(IWebElement webElement)
             where T : Element
         {
-            return (T)Activator.CreateInstance(typeof(T), webDriver, webElement);
+            return (T)Activator.CreateInstance(typeof(T), _webDriver, webElement);
         }
 
         /// <summary>

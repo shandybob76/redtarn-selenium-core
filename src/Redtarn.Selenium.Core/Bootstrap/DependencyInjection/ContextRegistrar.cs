@@ -19,7 +19,7 @@ namespace RedTarn.Selenium.Core.Bootstrap.DependencyInjection
         /// <param name="objectContainer">The object container.</param>
         public static void RegisterContext(this IObjectContainer objectContainer)
         {
-            objectContainer.RegisterTypeAs<UIContext, IUIContext>();
+            objectContainer.RegisterTypeAs<UserInterfaceContext, IUserInterfaceContext>();
             objectContainer.RegisterTypeAs<DataContext, IDataContext>();
             objectContainer.RegisterTypeAs<Context, IContext>();
         }

@@ -16,7 +16,7 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         /// <summary>
         /// Local cache of the items.
         /// </summary>
-        private readonly Dictionary<string, object> items = new Dictionary<string, object>();
+        private readonly Dictionary<string, object> _items = new Dictionary<string, object>();
 
         /// <summary>
         /// Finalizes an instance of the <see cref="DataContext"/> class.
@@ -34,7 +34,7 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         /// <param name="item">The item.</param>
         public void Add<T>(string key, T item)
         {
-            items[key] = item;
+            _items[key] = item;
         }
 
         /// <summary>
@@ -45,12 +45,12 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         /// <returns>The item if it exists.</returns>
         public T Get<T>(string key)
         {
-            if (!items.ContainsKey(key))
+            if (!_items.ContainsKey(key))
             {
                 return default;
             }
 
-            return (T)items[key];
+            return (T)_items[key];
         }
 
         /// <summary>
@@ -59,9 +59,9 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         /// <param name="key">The key of the item.</param>
         public void Remove(string key)
         {
-            if (items.ContainsKey(key))
+            if (_items.ContainsKey(key))
             {
-                items.Remove(key);
+                _items.Remove(key);
             }
         }
 
@@ -73,12 +73,12 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         /// <param name="item">The item to add.</param>
         public void AddListItem<T>(string key, T item)
         {
-            if (!items.ContainsKey(key))
+            if (!_items.ContainsKey(key))
             {
-                items.Add(key, new List<T>());
+                _items.Add(key, new List<T>());
             }
 
-            ((List<T>)items[key]).Add(item);
+            ((List<T>)_items[key]).Add(item);
         }
 
         /// <summary>

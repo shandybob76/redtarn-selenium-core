@@ -18,11 +18,14 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         /// </summary>
         /// <param name="testConfiguration">The test configuration.</param>
         /// <param name="dataContext">The data context.</param>
-        /// <param name="uiContext">The UI context.</param>
-        public Context(ITestConfiguration testConfiguration, IDataContext dataContext, IUIContext uiContext)
+        /// <param name="userInterfaceContext">The User interface context.</param>
+        public Context(
+            ITestConfiguration testConfiguration,
+            IDataContext dataContext,
+            IUserInterfaceContext userInterfaceContext)
         {
             Data = dataContext;
-            UI = uiContext;
+            UserInterface = userInterfaceContext;
             Config = testConfiguration;
         }
 
@@ -32,9 +35,9 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         public IDataContext Data { get; }
 
         /// <summary>
-        /// Gets the UI context.
+        /// Gets the User interface context.
         /// </summary>
-        public IUIContext UI { get; }
+        public IUserInterfaceContext UserInterface { get; }
 
         /// <summary>
         /// Gets the test configuration.
@@ -59,7 +62,7 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         protected virtual void Dispose(bool disposing)
         {
             Data?.Dispose();
-            UI?.Dispose();
+            UserInterface?.Dispose();
         }
     }
 }
