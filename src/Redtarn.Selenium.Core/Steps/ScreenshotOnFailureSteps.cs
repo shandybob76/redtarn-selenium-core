@@ -17,7 +17,7 @@ namespace RedTarn.Selenium.Core.Steps
         /// <summary>
         /// The scenario context.
         /// </summary>
-        private readonly ScenarioContext scenarioContext;
+        private readonly ScenarioContext _scenarioContext;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ScreenshotOnFailureSteps"/> class.
@@ -27,7 +27,7 @@ namespace RedTarn.Selenium.Core.Steps
         public ScreenshotOnFailureSteps(IContext context, ScenarioContext scenarioContext)
             : base(context)
         {
-            this.scenarioContext = scenarioContext;
+            _scenarioContext = scenarioContext;
         }
 
         /// <summary>
@@ -36,9 +36,9 @@ namespace RedTarn.Selenium.Core.Steps
         [AfterScenario(Order = int.MinValue)]
         public void ProcessTestFailureScreenshot()
         {
-            if (this.scenarioContext.TestError != null)
+            if (_scenarioContext.TestError != null)
             {
-                this.Context.UI.TakeScreenshot(this.scenarioContext);
+                Context.UI.TakeScreenshot(_scenarioContext);
             }
         }
     }

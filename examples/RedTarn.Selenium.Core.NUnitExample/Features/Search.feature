@@ -6,7 +6,7 @@ Feature: Search
 
 Scenario: Perform Companies House Search
 	Given I am on the homepage
-	And I have entered 'Red Tarn Technology' into the seaerch box
+	And I have entered 'Red Tarn Technology' into the search box
 	When I press search
 	And I am taken to the search results page
 	And I select the first item in the results list

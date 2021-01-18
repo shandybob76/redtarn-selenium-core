@@ -24,16 +24,16 @@ namespace RedTarn.Selenium.Core.Bootstrap.UIElements
         /// <summary>
         /// Gets a value indicating whether the radio is selected.
         /// </summary>
-        public bool Checked => this.GetAttribute("checked") != null;
+        public bool Checked => GetAttribute("checked") != null;
 
         /// <summary>
         /// Select the radio.
         /// </summary>
         public void Check()
         {
-            if (!this.Checked)
+            if (!Checked)
             {
-                this.Click();
+                Click();
             }
         }
     }

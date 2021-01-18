@@ -23,7 +23,7 @@ namespace RedTarn.Selenium.Core.NUnitExample.UISteps
             this.Context.UI.GoToUrl("");
         }
 
-        [Given(@"I have entered '(.*)' into the seaerch box")]
+        [Given(@"I have entered '(.*)' into the search box")]
         public void GivenIHaveEnteredIntoTheSeaerchBox(string searchText)
         {
             this.homePage.SearchInput.SendKeys(searchText);

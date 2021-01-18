@@ -8,13 +8,13 @@ namespace RedTarn.Selenium.Core.NUnitExample.UISteps
     [Binding]
     public class CompanyDetailsPageSteps : BaseSteps
     {
-        private readonly CompanyDetailsPage companyDetailsPage;
+        private readonly CompanyDetailsPage _companyDetailsPage;
 
         public CompanyDetailsPageSteps(
             IContext context,
             CompanyDetailsPage companyDetailsPage) : base(context)
         {
-            this.companyDetailsPage = companyDetailsPage;
+            _companyDetailsPage = companyDetailsPage;
         }
 
         [Then(@"I am taken to the correct company details")]

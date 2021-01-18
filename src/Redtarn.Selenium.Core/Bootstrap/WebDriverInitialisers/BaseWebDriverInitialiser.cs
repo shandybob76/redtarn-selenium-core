@@ -20,15 +20,12 @@ namespace RedTarn.Selenium.Core.Bootstrap.WebDriverInitialisers
         /// <returns>The web driver.</returns>
         public IWebDriver Initialise(DeviceType deviceType)
         {
-            switch (deviceType)
+            return deviceType switch
             {
-                case DeviceType.Phone:
-                    return this.InitialisePhone();
-                case DeviceType.Tablet:
-                    return this.InitialiseTablet();
-                default:
-                    return this.InitialiseDesktop();
-            }
+                DeviceType.Phone => InitialisePhone(),
+                DeviceType.Tablet => InitialiseTablet(),
+                _ => InitialiseDesktop(),
+            };
         }
 
         /// <summary>

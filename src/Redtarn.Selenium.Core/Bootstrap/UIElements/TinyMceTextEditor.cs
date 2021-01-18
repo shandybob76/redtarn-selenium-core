@@ -32,13 +32,13 @@ namespace RedTarn.Selenium.Core.Bootstrap.UIElements
         /// <param name="text">The text to send.</param>
         public override void SendKeys(string text)
         {
-            this.WebDriver.SwitchTo().Frame(this.WebElement);
-            var tinyMceEditor = this.WebDriver.FindElement(By.Id(TinyMceComponentId));
+            WebDriver.SwitchTo().Frame(WebElement);
+            var tinyMceEditor = WebDriver.FindElement(By.Id(TinyMceComponentId));
             tinyMceEditor.Clear();
             tinyMceEditor.Click();
             tinyMceEditor.SendKeys(text);
 
-            this.WebDriver.SwitchTo().ParentFrame();
+            WebDriver.SwitchTo().ParentFrame();
         }
     }
 }

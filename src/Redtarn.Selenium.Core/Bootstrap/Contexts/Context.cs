@@ -2,6 +2,7 @@
 // Copyright (c) Red Tarn Technology Ltd. All rights reserved.
 // </copyright>
 
+using System;
 using RedTarn.Selenium.Core.Bootstrap.Configuration.Interfaces;
 using RedTarn.Selenium.Core.Bootstrap.Contexts.Interfaces;
 
@@ -20,9 +21,9 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         /// <param name="uiContext">The UI context.</param>
         public Context(ITestConfiguration testConfiguration, IDataContext dataContext, IUIContext uiContext)
         {
-            this.Data = dataContext;
-            this.UI = uiContext;
-            this.Config = testConfiguration;
+            Data = dataContext;
+            UI = uiContext;
+            Config = testConfiguration;
         }
 
         /// <summary>
@@ -46,8 +47,19 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         /// </summary>
         public void Dispose()
         {
-            this.Data?.Dispose();
-            this.UI?.Dispose();
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing,
+        /// releasing, or resetting unmanaged resources.
+        /// </summary>
+        /// <param name="disposing">Whether we are disposing.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            Data?.Dispose();
+            UI?.Dispose();
         }
     }
 }
