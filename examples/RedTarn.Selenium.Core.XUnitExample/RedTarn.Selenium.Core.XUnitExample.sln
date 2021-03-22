@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedTarn.Selenium.Core", "..\..\src\Redtarn.Selenium.Core\RedTarn.Selenium.Core.csproj", "{AEA073F7-206F-4F36-8DEB-B285024B81A2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedTarn.Selenium.Core.XUnitExample", "RedTarn.Selenium.Core.XUnitExample.csproj", "{B0852E49-0ADF-4FD3-944F-8AB1A408379E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AEA073F7-206F-4F36-8DEB-B285024B81A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEA073F7-206F-4F36-8DEB-B285024B81A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEA073F7-206F-4F36-8DEB-B285024B81A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEA073F7-206F-4F36-8DEB-B285024B81A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0852E49-0ADF-4FD3-944F-8AB1A408379E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0852E49-0ADF-4FD3-944F-8AB1A408379E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0852E49-0ADF-4FD3-944F-8AB1A408379E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0852E49-0ADF-4FD3-944F-8AB1A408379E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {32114DE9-59F9-427D-BC76-CC549AC8C426}
+	EndGlobalSection
+EndGlobal
