@@ -27,7 +27,7 @@ namespace RedTarn.Selenium.Core.Bootstrap.UIElements
         /// <param name="filePath">The absolute file path.</param>
         public void SetFile(string filePath)
         {
-            this.SendKeys(filePath);
+            SendKeys(filePath);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace RedTarn.Selenium.Core.Bootstrap
         /// <summary>
         /// The object container.
         /// </summary>
-        private readonly IObjectContainer objectContainer;
+        private readonly IObjectContainer _objectContainer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BootstrapSteps"/> class.
@@ -25,7 +25,7 @@ namespace RedTarn.Selenium.Core.Bootstrap
         /// <param name="objectContainer">The object container.</param>
         public BootstrapSteps(IObjectContainer objectContainer)
         {
-            this.objectContainer = objectContainer;
+            _objectContainer = objectContainer;
         }
 
         /// <summary>
@@ -36,9 +36,9 @@ namespace RedTarn.Selenium.Core.Bootstrap
         [BeforeScenario(Order = int.MinValue)]
         public void Initialise()
         {
-            this.objectContainer.RegisterWebDrivers();
-            this.objectContainer.RegisterConfiguration();
-            this.objectContainer.RegisterContext();
+            _objectContainer.RegisterWebDrivers();
+            _objectContainer.RegisterConfiguration();
+            _objectContainer.RegisterContext();
         }
     }
 }

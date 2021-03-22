@@ -2,6 +2,7 @@
 // Copyright (c) Red Tarn Technology Ltd. All rights reserved.
 // </copyright>
 
+using System;
 using System.Collections.Generic;
 using RedTarn.Selenium.Core.Bootstrap.Contexts.Interfaces;
 
@@ -15,7 +16,15 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         /// <summary>
         /// Local cache of the items.
         /// </summary>
-        private readonly Dictionary<string, object> items = new Dictionary<string, object>();
+        private readonly Dictionary<string, object> _items = new Dictionary<string, object>();
+
+        /// <summary>
+        /// Finalizes an instance of the <see cref="DataContext"/> class.
+        /// </summary>
+        ~DataContext()
+        {
+            Dispose(false);
+        }
 
         /// <summary>
         /// Add a new item to the data context.
@@ -25,7 +34,7 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         /// <param name="item">The item.</param>
         public void Add<T>(string key, T item)
         {
-            this.items[key] = item;
+            _items[key] = item;
         }
 
         /// <summary>
@@ -36,12 +45,12 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         /// <returns>The item if it exists.</returns>
         public T Get<T>(string key)
         {
-            if (!this.items.ContainsKey(key))
+            if (!_items.ContainsKey(key))
             {
-                return default(T);
+                return default;
             }
 
-            return (T)this.items[key];
+            return (T)_items[key];
         }
 
         /// <summary>
@@ -50,9 +59,9 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         /// <param name="key">The key of the item.</param>
         public void Remove(string key)
         {
-            if (this.items.ContainsKey(key))
+            if (_items.ContainsKey(key))
             {
-                this.items.Remove(key);
+                _items.Remove(key);
             }
         }
 
@@ -64,12 +73,12 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         /// <param name="item">The item to add.</param>
         public void AddListItem<T>(string key, T item)
         {
-            if (!this.items.ContainsKey(key))
+            if (!_items.ContainsKey(key))
             {
-                this.items.Add(key, new List<T>());
+                _items.Add(key, new List<T>());
             }
 
-            ((List<T>)this.items[key]).Add(item);
+            ((List<T>)_items[key]).Add(item);
         }
 
         /// <summary>
@@ -80,7 +89,7 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         /// <returns>The list of items if it exists.</returns>
         public List<T> GetList<T>(string listKey)
         {
-            return this.Get<List<T>>(listKey);
+            return Get<List<T>>(listKey);
         }
 
         /// <summary>
@@ -88,6 +97,17 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
         /// releasing, or resetting unmanaged resources.
         /// </summary>
         public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing,
+        /// releasing, or resetting unmanaged resources.
+        /// </summary>
+        /// <param name="disposing">Whether we are disposing.</param>
+        protected virtual void Dispose(bool disposing)
         {
         }
     }

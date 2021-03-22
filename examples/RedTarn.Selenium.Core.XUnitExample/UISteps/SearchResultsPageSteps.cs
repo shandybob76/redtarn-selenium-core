@@ -1,10 +1,10 @@
 ﻿using System.Linq;
-using NUnit.Framework;
 using RedTarn.Selenium.Core.Bootstrap.Contexts.Interfaces;
-using RedTarn.Selenium.Core.NUnitExample.UI;
+using RedTarn.Selenium.Core.XUnitExample.UI;
 using TechTalk.SpecFlow;
+using Xunit;
 
-namespace RedTarn.Selenium.Core.NUnitExample.UISteps
+namespace RedTarn.Selenium.Core.XUnitExample.UISteps
 {
     [Binding]
     public class SearchResultsPageSteps : BaseSteps
@@ -21,7 +21,7 @@ namespace RedTarn.Selenium.Core.NUnitExample.UISteps
         [When(@"I am taken to the search results page")]
         public void WhenIAmTakenToTheSearchResultsPage()
         {
-            Assert.IsTrue(this.Context.UserInterface.IsUrl("search"));
+            Assert.True(this.Context.UserInterface.IsUrl("search"));
         }
 
         [When(@"I select the first item in the results list")]

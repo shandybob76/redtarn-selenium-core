@@ -18,9 +18,9 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts.Interfaces
         IDataContext Data { get; }
 
         /// <summary>
-        /// Gets the UI context.
+        /// Gets the User interface context.
         /// </summary>
-        IUIContext UI { get; }
+        IUserInterfaceContext UserInterface { get; }
 
         /// <summary>
         /// Gets the test configuration.

@@ -17,7 +17,7 @@ namespace RedTarn.Selenium.Core
         /// <param name="context">The test context.</param>
         public BaseSteps(IContext context)
         {
-            this.Context = context;
+            Context = context;
         }
 
         /// <summary>

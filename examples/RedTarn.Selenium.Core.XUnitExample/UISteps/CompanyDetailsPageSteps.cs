@@ -1,9 +1,9 @@
-﻿using NUnit.Framework;
-using RedTarn.Selenium.Core.Bootstrap.Contexts.Interfaces;
-using RedTarn.Selenium.Core.NUnitExample.UI;
+﻿using RedTarn.Selenium.Core.Bootstrap.Contexts.Interfaces;
+using RedTarn.Selenium.Core.XUnitExample.UI;
 using TechTalk.SpecFlow;
+using Xunit;
 
-namespace RedTarn.Selenium.Core.NUnitExample.UISteps
+namespace RedTarn.Selenium.Core.XUnitExample.UISteps
 {
     [Binding]
     public class CompanyDetailsPageSteps : BaseSteps
@@ -20,8 +20,8 @@ namespace RedTarn.Selenium.Core.NUnitExample.UISteps
         [Then(@"I am taken to the correct company details")]
         public void ThenIAmTakenToTheCorrectCompanyDetails()
         {
-            Assert.IsNotNull(_companyDetailsPage.GetContainer());
-            Assert.IsTrue(this.Context.UserInterface.IsUrl("company/09009606"));
+            Assert.NotNull(_companyDetailsPage.GetContainer());
+            Assert.True(this.Context.UserInterface.IsUrl("company/09009606"));
         }
     }
 }

@@ -7,32 +7,31 @@ namespace RedTarn.Selenium.Core.NUnitExample.UISteps
     [Binding]
     public class HomePageSteps : BaseSteps
     {
-        private readonly HomePage homePage;
-
+        private readonly HomePage _homePage;
         
         public HomePageSteps(
             IContext context,
             HomePage homePage) : base(context)
         {
-            this.homePage = homePage;
+            _homePage = homePage;
         }
 
         [Given(@"I am on the homepage")]
         public void GivenIAmOnTheHomepage()
         {
-            this.Context.UI.GoToUrl("");
+            this.Context.UserInterface.GoToUrl("");
         }
 
-        [Given(@"I have entered '(.*)' into the seaerch box")]
+        [Given(@"I have entered '(.*)' into the search box")]
         public void GivenIHaveEnteredIntoTheSeaerchBox(string searchText)
         {
-            this.homePage.SearchInput.SendKeys(searchText);
+            _homePage.SearchInput.SendKeys(searchText);
         }
 
         [When(@"I press search")]
         public void WhenIPressSearch()
         {
-            this.homePage.SearchButton.Click();
+            _homePage.SearchButton.Click();
         }
     }
 }

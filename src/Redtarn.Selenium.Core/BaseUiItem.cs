@@ -1,4 +1,4 @@
-﻿// <copyright file="BaseUIItem.cs" company="Red Tarn Technology Ltd">
+﻿// <copyright file="BaseUiItem.cs" company="Red Tarn Technology Ltd">
 // Copyright (c) Red Tarn Technology Ltd. All rights reserved.
 // </copyright>
 
@@ -18,7 +18,7 @@ namespace RedTarn.Selenium.Core
         /// <summary>
         /// The container selector.
         /// </summary>
-        private readonly By containerSelector;
+        private readonly By _containerSelector;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BaseUIItem"/> class.
@@ -27,8 +27,8 @@ namespace RedTarn.Selenium.Core
         /// <param name="containerSelector">The container selector.</param>
         protected BaseUIItem(IContext context, By containerSelector)
         {
-            this.Context = context;
-            this.containerSelector = containerSelector;
+            Context = context;
+            _containerSelector = containerSelector;
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace RedTarn.Selenium.Core
         public T GetElementByClassName<T>(string className)
             where T : Element
         {
-            return this.Context.UI.GetElement<T>(By.ClassName(className), this.GetContainer());
+            return Context.UserInterface.GetElement<T>(By.ClassName(className), GetContainer());
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace RedTarn.Selenium.Core
         public IEnumerable<T> GetElementsByClassName<T>(string className)
             where T : Element
         {
-            return this.Context.UI.GetElements<T>(By.ClassName(className), this.GetContainer());
+            return Context.UserInterface.GetElements<T>(By.ClassName(className), GetContainer());
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace RedTarn.Selenium.Core
         /// <returns>True if the element does not exist.</returns>
         public bool NotExistsByClassName(string className)
         {
-            return this.Context.UI.NotExists(By.ClassName(className), this.GetContainer());
+            return Context.UserInterface.NotExists(By.ClassName(className), GetContainer());
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace RedTarn.Selenium.Core
         public T GetElementByCssSelector<T>(string cssSelector)
             where T : Element
         {
-            return this.Context.UI.GetElement<T>(By.CssSelector(cssSelector), this.GetContainer());
+            return Context.UserInterface.GetElement<T>(By.CssSelector(cssSelector), GetContainer());
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace RedTarn.Selenium.Core
         public IEnumerable<T> GetElementsByCssSelector<T>(string cssSelector)
             where T : Element
         {
-            return this.Context.UI.GetElements<T>(By.CssSelector(cssSelector), this.GetContainer());
+            return Context.UserInterface.GetElements<T>(By.CssSelector(cssSelector), GetContainer());
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace RedTarn.Selenium.Core
         /// <returns>True if the element does not exist.</returns>
         public bool NotExistsByCssSelector(string cssSelector)
         {
-            return this.Context.UI.NotExists(By.CssSelector(cssSelector), this.GetContainer());
+            return Context.UserInterface.NotExists(By.CssSelector(cssSelector), GetContainer());
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace RedTarn.Selenium.Core
         public T GetElementById<T>(string id)
             where T : Element
         {
-            return this.Context.UI.GetElement<T>(By.Id(id), this.GetContainer());
+            return Context.UserInterface.GetElement<T>(By.Id(id), GetContainer());
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace RedTarn.Selenium.Core
         /// <returns>True if the element does not exist.</returns>
         public bool NotExistsById(string id)
         {
-            return this.Context.UI.NotExists(By.Id(id), this.GetContainer());
+            return Context.UserInterface.NotExists(By.Id(id), GetContainer());
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace RedTarn.Selenium.Core
         public T GetElementByLinkText<T>(string linkText)
             where T : Element
         {
-            return this.Context.UI.GetElement<T>(By.LinkText(linkText), this.GetContainer());
+            return Context.UserInterface.GetElement<T>(By.LinkText(linkText), GetContainer());
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace RedTarn.Selenium.Core
         public IEnumerable<T> GetElementsByLinkText<T>(string linkText)
             where T : Element
         {
-            return this.Context.UI.GetElements<T>(By.LinkText(linkText), this.GetContainer());
+            return Context.UserInterface.GetElements<T>(By.LinkText(linkText), GetContainer());
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace RedTarn.Selenium.Core
         /// <returns>True if the element does not exist.</returns>
         public bool NotExistsByLinkText(string linkText)
         {
-            return this.Context.UI.NotExists(By.LinkText(linkText), this.GetContainer());
+            return Context.UserInterface.NotExists(By.LinkText(linkText), GetContainer());
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace RedTarn.Selenium.Core
         public T GetElementByName<T>(string name)
             where T : Element
         {
-            return this.Context.UI.GetElement<T>(By.Name(name), this.GetContainer());
+            return Context.UserInterface.GetElement<T>(By.Name(name), GetContainer());
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace RedTarn.Selenium.Core
         public IEnumerable<T> GetElementsByName<T>(string name)
             where T : Element
         {
-            return this.Context.UI.GetElements<T>(By.Name(name), this.GetContainer());
+            return Context.UserInterface.GetElements<T>(By.Name(name), GetContainer());
         }
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace RedTarn.Selenium.Core
         /// <returns>True if the element does not exist.</returns>
         public bool NotExistsByName(string name)
         {
-            return this.Context.UI.NotExists(By.Name(name), this.GetContainer());
+            return Context.UserInterface.NotExists(By.Name(name), GetContainer());
         }
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace RedTarn.Selenium.Core
         public T GetElementByPartialLinkText<T>(string partialLinkText)
             where T : Element
         {
-            return this.Context.UI.GetElement<T>(By.PartialLinkText(partialLinkText), this.GetContainer());
+            return Context.UserInterface.GetElement<T>(By.PartialLinkText(partialLinkText), GetContainer());
         }
 
         /// <summary>
@@ -215,7 +215,7 @@ namespace RedTarn.Selenium.Core
         public IEnumerable<T> GetElementsByPartialLinkText<T>(string partialLinkText)
             where T : Element
         {
-            return this.Context.UI.GetElements<T>(By.PartialLinkText(partialLinkText), this.GetContainer());
+            return Context.UserInterface.GetElements<T>(By.PartialLinkText(partialLinkText), GetContainer());
         }
 
         /// <summary>
@@ -225,7 +225,7 @@ namespace RedTarn.Selenium.Core
         /// <returns>True if the element does not exist.</returns>
         public bool NotExistsByPartialLinkText(string partialLinkText)
         {
-            return this.Context.UI.NotExists(By.PartialLinkText(partialLinkText), this.GetContainer());
+            return Context.UserInterface.NotExists(By.PartialLinkText(partialLinkText), GetContainer());
         }
 
         /// <summary>
@@ -237,7 +237,7 @@ namespace RedTarn.Selenium.Core
         public T GetElementByTagName<T>(string tagName)
             where T : Element
         {
-            return this.Context.UI.GetElement<T>(By.TagName(tagName), this.GetContainer());
+            return Context.UserInterface.GetElement<T>(By.TagName(tagName), GetContainer());
         }
 
         /// <summary>
@@ -249,7 +249,7 @@ namespace RedTarn.Selenium.Core
         public IEnumerable<T> GetElementsByTagName<T>(string tagName)
             where T : Element
         {
-            return this.Context.UI.GetElements<T>(By.TagName(tagName), this.GetContainer());
+            return Context.UserInterface.GetElements<T>(By.TagName(tagName), GetContainer());
         }
 
         /// <summary>
@@ -259,41 +259,41 @@ namespace RedTarn.Selenium.Core
         /// <returns>True if the element does not exist.</returns>
         public bool NotExistsByTagName(string tagName)
         {
-            return this.Context.UI.NotExists(By.TagName(tagName), this.GetContainer());
+            return Context.UserInterface.NotExists(By.TagName(tagName), GetContainer());
         }
 
         /// <summary>
         /// Get a single element for the given XPath.
         /// </summary>
         /// <typeparam name="T">The type of UI element to return.</typeparam>
-        /// <param name="xPath">The XPath of the element.</param>
+        /// <param name="path">The XPath of the element.</param>
         /// <returns>The UI element if it exists.</returns>
-        public T GetElementByXPath<T>(string xPath)
+        public T GetElementByXPath<T>(string path)
             where T : Element
         {
-            return this.Context.UI.GetElement<T>(By.XPath(xPath), this.GetContainer());
+            return Context.UserInterface.GetElement<T>(By.XPath(path), GetContainer());
         }
 
         /// <summary>
         /// Get a list of elements for the given class XPath.
         /// </summary>
         /// <typeparam name="T">The type of UI element to return.</typeparam>
-        /// <param name="xPath">The XPath of the elements.</param>
+        /// <param name="path">The XPath of the elements.</param>
         /// <returns>The UI elements if they exists.</returns>
-        public IEnumerable<T> GetElementsByXPath<T>(string xPath)
+        public IEnumerable<T> GetElementsByXPath<T>(string path)
             where T : Element
         {
-            return this.Context.UI.GetElements<T>(By.XPath(xPath), this.GetContainer());
+            return Context.UserInterface.GetElements<T>(By.XPath(path), GetContainer());
         }
 
         /// <summary>
         /// Check the element does not exist for the given XPath.
         /// </summary>
-        /// <param name="xPath">The XPath of the element.</param>
+        /// <param name="path">The XPath of the element.</param>
         /// <returns>True if the element does not exist.</returns>
-        public bool NotExistsByXPath(string xPath)
+        public bool NotExistsByXPath(string path)
         {
-            return this.Context.UI.NotExists(By.XPath(xPath), this.GetContainer());
+            return Context.UserInterface.NotExists(By.XPath(path), GetContainer());
         }
 
         /// <summary>
@@ -306,7 +306,7 @@ namespace RedTarn.Selenium.Core
         public T GetElementByAttribute<T>(string name, string value)
             where T : Element
         {
-            return this.Context.UI.GetElement<T>(this.GetAttributeXPath(name, value), this.GetContainer());
+            return Context.UserInterface.GetElement<T>(GetAttributeXPath(name, value), GetContainer());
         }
 
         /// <summary>
@@ -317,7 +317,16 @@ namespace RedTarn.Selenium.Core
         /// <returns>True if the element does not exist.</returns>
         public bool NotExistsByAttribute(string name, string value)
         {
-            return this.Context.UI.NotExists(this.GetAttributeXPath(name, value), this.GetContainer());
+            return Context.UserInterface.NotExists(GetAttributeXPath(name, value), GetContainer());
+        }
+
+        /// <summary>
+        /// Get the container.
+        /// </summary>
+        /// <returns>The container.</returns>
+        public IWebElement GetContainer()
+        {
+            return Context.UserInterface.GetElement(_containerSelector);
         }
 
         /// <summary>
@@ -326,18 +335,9 @@ namespace RedTarn.Selenium.Core
         /// <param name="name">The name of the attribute.</param>
         /// <param name="value">The value of the attribute.</param>
         /// <returns>The attribute XPath to use.</returns>
-        private By GetAttributeXPath(string name, string value)
+        private static By GetAttributeXPath(string name, string value)
         {
             return By.XPath($"//*[@{name}='{value}']");
-        }
-
-        /// <summary>
-        /// Get the container.
-        /// </summary>
-        /// <returns>The container.</returns>
-        private IWebElement GetContainer()
-        {
-            return this.Context.UI.GetElement(this.containerSelector);
         }
     }
 }

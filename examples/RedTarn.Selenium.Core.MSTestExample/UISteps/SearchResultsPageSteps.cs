@@ -9,25 +9,25 @@ namespace RedTarn.Selenium.Core.MSTestExample.UISteps
     [Binding]
     public class SearchResultsPageSteps : BaseSteps
     {
-        private readonly SearchResultsPage searchResultsPage;
+        private readonly SearchResultsPage _searchResultsPage;
 
         public SearchResultsPageSteps(
             IContext context,
             SearchResultsPage searchResultsPage) : base(context)
         {
-            this.searchResultsPage = searchResultsPage;
+            _searchResultsPage = searchResultsPage;
         }
 
         [When(@"I am taken to the search results page")]
         public void WhenIAmTakenToTheSearchResultsPage()
         {
-            Assert.IsTrue(this.Context.UI.IsUrl("search"));
+            Assert.IsTrue(Context.UserInterface.IsUrl("search"));
         }
 
         [When(@"I select the first item in the results list")]
         public void WhenISelectTheFirstItemInTheResultsList()
         {
-            this.searchResultsPage.SearchResults.First().Click();
+            _searchResultsPage.SearchResults.First().Click();
         }
     }
 }

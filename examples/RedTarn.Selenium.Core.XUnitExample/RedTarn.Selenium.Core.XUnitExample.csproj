@@ -17,14 +17,17 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" />
-    <PackageReference Include="NUnit" Version="3.13.1" />
-    <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
     <PackageReference Include="Selenium.Firefox.WebDriver" Version="0.27.0" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="89.0.4389.2300" />
     <PackageReference Include="Selenium.WebDriver.IEDriver" Version="3.150.1.2" />
     <PackageReference Include="Selenium.WebDriver.MicrosoftDriver" Version="17.17134.0" />
-    <PackageReference Include="SpecFlow.NUnit" Version="3.7.38" />
     <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.7.38" />
+    <PackageReference Include="SpecFlow.xUnit" Version="3.7.38" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
