@@ -84,7 +84,14 @@ namespace RedTarn.Selenium.Core.Bootstrap.Contexts
                 url = url[1..];
             }
 
-            _webDriver.Navigate().GoToUrl(_baseUrl + url);
+            if (url.StartsWith("http://") || url.StartsWith("https://"))
+            {
+                _webDriver.Navigate().GoToUrl(url);
+            }
+            else
+            {
+                _webDriver.Navigate().GoToUrl(_baseUrl + url);
+            }
         }
 
         /// <summary>
