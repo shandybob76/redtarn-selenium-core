@@ -20,7 +20,10 @@ namespace RedTarn.Selenium.Core.Bootstrap.WebDriverInitialisers
         /// <returns>The web driver.</returns>
         protected override IWebDriver InitialiseDesktop()
         {
-            var webDriver = new ChromeDriver(Environment.CurrentDirectory);
+            var desktopOptions = new ChromeOptions();
+            desktopOptions.AddArgument("no-sandbox");
+
+            var webDriver = new ChromeDriver(Environment.CurrentDirectory, desktopOptions);
 
             webDriver.Manage().Window.Size = new Size(1280, 1024);
 
@@ -35,6 +38,7 @@ namespace RedTarn.Selenium.Core.Bootstrap.WebDriverInitialisers
         {
             var tabletChromeOptions = new ChromeOptions();
             tabletChromeOptions.EnableMobileEmulation("iPad");
+            tabletChromeOptions.AddArgument("no-sandbox");
 
             var webDriver = new ChromeDriver(Environment.CurrentDirectory, tabletChromeOptions);
 
@@ -51,6 +55,7 @@ namespace RedTarn.Selenium.Core.Bootstrap.WebDriverInitialisers
         {
             var phoneChromeOptions = new ChromeOptions();
             phoneChromeOptions.EnableMobileEmulation("iPhone 6/7/8 Plus");
+            phoneChromeOptions.AddArgument("no-sandbox");
 
             var webDriver = new ChromeDriver(Environment.CurrentDirectory, phoneChromeOptions);
 
