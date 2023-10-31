@@ -72,6 +72,12 @@ namespace RedTarn.Selenium.Core.Bootstrap.UIElements
         protected IWebElement WebElement { get; }
 
         /// <summary>
+        /// Gets the representation of an element's shadow root for accessing the shadow DOM of a web component.
+        /// </summary>
+        /// <returns>A shadow root representation.</returns>
+        public virtual ISearchContext GetShadowRoot() => WebElement.GetShadowRoot();
+
+        /// <summary>
         /// Clear the UI element.
         /// </summary>
         public virtual void Clear() => WebElement.Clear();
@@ -109,18 +115,31 @@ namespace RedTarn.Selenium.Core.Bootstrap.UIElements
         public virtual string GetAttribute(string attributeName) => WebElement.GetAttribute(attributeName);
 
         /// <summary>
+        /// Gets the value of a declared HTML attribute of this element.
+        /// </summary>
+        /// <param name="attributeName">The name of the HTML attribute to get the value of.</param>
+        /// <returns>
+        /// The HTML attribute's current value. Returns a <see langword="null" /> if the
+        /// value is not set or the declared attribute does not exist.
+        /// </returns>
+        public virtual string GetDomAttribute(string attributeName) => WebElement.GetDomAttribute(attributeName);
+
+        /// <summary>
+        /// Gets the value of a JavaScript property of this element.
+        /// </summary>
+        /// <param name="propertyName">The name of the JavaScript property to get the value of.</param>
+        /// <returns>
+        /// The JavaScript property's current value. Returns a <see langword="null" /> if the
+        /// value is not set or the property does not exist.
+        /// </returns>
+        public virtual string GetDomProperty(string propertyName) => WebElement.GetDomProperty(propertyName);
+
+        /// <summary>
         /// Get the css value.
         /// </summary>
         /// <param name="propertyName">The property name.</param>
         /// <returns>The css value.</returns>
         public virtual string GetCssValue(string propertyName) => WebElement.GetCssValue(propertyName);
-
-        /// <summary>
-        /// Get the property.
-        /// </summary>
-        /// <param name="propertyName">The property name.</param>
-        /// <returns>The property value.</returns>
-        public virtual string GetProperty(string propertyName) => WebElement.GetProperty(propertyName);
 
         /// <summary>
         /// Send keys to the element.
