@@ -21,7 +21,7 @@ namespace RedTarn.Selenium.Core.NUnitExample.UISteps
         [When(@"I am taken to the search results page")]
         public void WhenIAmTakenToTheSearchResultsPage()
         {
-            Assert.IsTrue(this.Context.UserInterface.IsUrl("search"));
+            Assert.That(this.Context.UserInterface.IsUrl("search"), Is.True);
         }
 
         [When(@"I select the first item in the results list")]

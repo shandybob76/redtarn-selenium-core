@@ -20,8 +20,8 @@ namespace RedTarn.Selenium.Core.NUnitExample.UISteps
         [Then(@"I am taken to the correct company details")]
         public void ThenIAmTakenToTheCorrectCompanyDetails()
         {
-            Assert.IsNotNull(_companyDetailsPage.GetContainer());
-            Assert.IsTrue(this.Context.UserInterface.IsUrl("company/09009606"));
+            Assert.That(_companyDetailsPage.GetContainer(), Is.Not.Null);
+            Assert.That(Context.UserInterface.IsUrl("company/09009606"), Is.True);
         }
     }
 }
