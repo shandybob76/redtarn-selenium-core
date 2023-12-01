@@ -19,7 +19,7 @@ namespace RedTarn.Selenium.Core.NUnitExample.UISteps
         [Given(@"I am on the homepage")]
         public void GivenIAmOnTheHomepage()
         {
-            this.Context.UserInterface.GoToUrl("");
+            Context.UserInterface.GoToUrl("");
         }
 
         [Given(@"I have entered '(.*)' into the search box")]
